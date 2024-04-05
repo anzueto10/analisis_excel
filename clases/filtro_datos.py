@@ -1,4 +1,5 @@
-from lector_excel import LectorExcel as Lector
+from .lector_excel import LectorExcel as Lector
+import pandas as pd
 
 class FiltroDatos(Lector):
     def __init__(self, archivo_excel, nombre_hoja,valor_buscado):
