@@ -1,5 +1,6 @@
 import sys
 import os
+import pandas as pd
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'analisis_excel')))
 
@@ -8,4 +9,6 @@ from clases.estadisticas_excel import EstadisticasExcel
 from clases.grafico_barras import GraficoDeBarras
 from clases.filtro_datos import FiltroDatos
 
+data = pd.read_excel('archivo.xlsx')
 
+print(data)
