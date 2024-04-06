@@ -1,14 +1,16 @@
-from abc import ABC, abstractmethod
+from .constructor_excel_clases import ConstructorExcel as Cons
+import pandas as pd
 
-class LectorExcel(ABC):
-    @abstractmethod
-    def __init__(self,archivo_excel,nombre_hoja):
-        self.archivo_excel = archivo_excel
-        self.nombre_hoja = nombre_hoja
-    
-    @abstractmethod
-    def leer_datos(self): pass
-    
-    @abstractmethod
-    def obtener_encabezados(self): pass
+class LectorExcel(Cons):
+    def __init__(self, archivo_excel, nombre_hoja):
+        super().__init__(archivo_excel, nombre_hoja)
+
+    def leer_excel(self):
+        df = pd.read_excel(self.archivo_excel, sheet_name=self.nombre_hoja)
+        return df
+     
+    def leer_hojas(self): 
+        hojas = pd.ExcelFile(self.archivo_excel)
+        return hojas.sheet_names
+        
         
