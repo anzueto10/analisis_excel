@@ -94,6 +94,5 @@ def analizar_archivo_excel():
         #Y acá generamos el gráfico de barras
         crear_grafico_de_barras(ruta_archivo,hoja[1],"Total",f"Grafico de {archivo[1]}")
     
-#Ejecutamos la funsión
-analizar_archivo_excel()
+
         
