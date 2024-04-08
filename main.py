@@ -52,7 +52,6 @@ def obtener_datos_y_encabezados(archivo,hoja):
 
 def crear_tabla_datos(archivo,hoja,contenedor):
     encabezados, datos = obtener_datos_y_encabezados(archivo,hoja)
-    
     datos = list(zip(*datos))
 
     #Crear tabla con encabezados y datos
@@ -69,6 +68,7 @@ def crear_tabla_datos(archivo,hoja,contenedor):
     tabla_contenedor.pack(expand=True, fill="both")
     
 def mostrar_datos_en_tabla(archivo,hoja):
+    borrar_frames(marco_principal)
     contenedor_tabla = Frame(marco_principal,bg="#fff")
     contenedor_tabla.pack(expand=True, fill="both", padx=5, pady=5)
     crear_tabla_datos(archivo,hoja,contenedor_tabla)
@@ -85,6 +85,7 @@ def generar_estadisticas(archivo):
     else: pass
     
 def mostrar_datos_estadistica(datos,hoja,columna):
+    borrar_frames(marco_principal)
     contenedor_labels_estadistica = Frame(marco_principal, bg="#fff")
     contenedor_labels_estadistica.pack(expand=True, fill="both", padx=20, pady=20)
 
