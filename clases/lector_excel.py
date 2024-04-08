@@ -23,4 +23,5 @@ class LectorExcel(Cons):
     def nombre_archivo(self):
         nombre_archivo = os.path.splitext(os.path.basename(self.archivo_excel))[0]
         return nombre_archivo
+
     

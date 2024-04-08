@@ -16,8 +16,11 @@ def generar_opciones_de_usuario(archivo):
         padding=(29,20)
     )
     
-    #boton_obtener_datos = ttk.Button(opciones_contenedor,command=,text="Obtener los datos en forma de tabla",style="opciones_usuario.TButton")
-    #boton_obtener_datos.pack()
+    boton_obtener_datos = ttk.Button(contenedor_opciones_usuario,
+                                     command=lambda:boton_obtener_datos_funsion(archivo),
+                                     text="Obtener los datos en forma de tabla",
+                                     style="opciones_usuario.TButton")
+    boton_obtener_datos.pack(side="left",expand=True)
     
     boton_estadisticas = ttk.Button(contenedor_opciones_usuario, 
                                 command=lambda:boton_estadisticas_funcion(archivo),
@@ -36,6 +39,39 @@ def generar_opciones_de_usuario(archivo):
                                            text="Generar un gráfico de las estadísticas", 
                                            style="opciones_usuario.TButton")
     boton_generar_grafico_barras.pack(side="left",expand=True)
+
+def boton_obtener_datos_funsion(archivo):
+    hoja = hojas_ventana_emergente(archivo)
+    mostrar_datos_en_tabla(archivo,hoja)
+    
+def obtener_datos_y_encabezados(archivo,hoja):
+    analisis = anm.AnalisisMultiple(archivo)
+    encabezados = analisis.obtener_columnas_encabezados(hoja)
+    datos = analisis.obtener_datos_hoja(hoja)
+    return encabezados,datos
+
+def crear_tabla_datos(archivo,hoja,contenedor):
+    encabezados, datos = obtener_datos_y_encabezados(archivo,hoja)
+    
+    datos = list(zip(*datos))
+
+    #Crear tabla con encabezados y datos
+    tabla_contenedor = ttk.Treeview(contenedor)
+    tabla_contenedor["columns"] = encabezados
+
+    for encabezado in encabezados:
+        tabla_contenedor.heading(encabezado, text=encabezado)
+
+    #Agregar datos a la tabla
+    for fila in datos:
+        tabla_contenedor.insert("", "end", values=fila)
+
+    tabla_contenedor.pack(expand=True, fill="both")
+    
+def mostrar_datos_en_tabla(archivo,hoja):
+    contenedor_tabla = Frame(marco_principal,bg="#fff")
+    contenedor_tabla.pack(expand=True, fill="both", padx=5, pady=5)
+    crear_tabla_datos(archivo,hoja,contenedor_tabla)
     
     
 def generar_estadisticas(archivo):

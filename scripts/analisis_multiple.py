@@ -11,6 +11,7 @@ from clases.grafico_barras import GraficoDeBarras
 from clases.filtro_datos import FiltroDatos
 from clases.columnas_datos import ColumnasDatos
 from clases.informe_estructura import InformeEstructura
+from clases.datos_hoja import DatosHoja
 
 #Definimos todas las funciones:--
 class AnalisisMultiple():
@@ -54,6 +55,9 @@ class AnalisisMultiple():
 
     #Este es para obtener las columnas 
     def obtener_columnas_encabezados(self,nombre_hoja): return ColumnasDatos(self.archivo_excel).encabezados(nombre_hoja)
+    
+    #Este para los datos
+    def obtener_datos_hoja(self,hoja):return DatosHoja(self.archivo_excel).obtener_datos_sin_encabezado(hoja)
 
     #Este es para obtener las hojas de u narchivo excel
     def obtener_hojas(self): 
@@ -61,13 +65,13 @@ class AnalisisMultiple():
         return lector_excel.leer_hojas()
     
     #Este es para filtrar los datos de la hoja
-    def filtrar_datos(self): pass
     
     def filtrar_numerica(self,hoja,columna):
         filtro = FiltroDatos(self.archivo_excel)
         columnas_numericas = filtro.filtrar_columnas_numericas(hoja,True)
         if columna in columnas_numericas: return True
         else: return False
+    
         
 
         
