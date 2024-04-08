@@ -1,0 +1,31 @@
+---------------------------------------------
+            Archivo: C:/Users/uwu/Desktop/Analisis Excel Python/analisis_excel/data/tablas_compras.xlsx
+            Número de hojas: 2
+        
+   
+            ---Hoja: 1
+            Nombre de la hoja: Compras Lunes
+            
+
+            --Columna 2
+            Nombre de la columna: Total
+            
+            **Datos estadísticos**
+
+                Promedio: 128.64
+                Mediana: 100.0
+                Desviación Estándar: 83.31
+               
+            ---Hoja: 2
+            Nombre de la hoja: Compras Martes
+            
+
+            --Columna 2
+            Nombre de la columna: Total
+            
+            **Datos estadísticos**
+
+                Promedio: 111.82
+                Mediana: 95.0
+                Desviación Estándar: 41.61
+            

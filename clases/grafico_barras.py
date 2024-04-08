@@ -3,13 +3,13 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 class GraficoDeBarras(Estadisticas):
-    def __init__(self, archivo_excel, nombre_hoja):
-        super().__init__(archivo_excel, nombre_hoja)
+    def __init__(self, archivo_excel):
+        super().__init__(archivo_excel)
     
-    def generar_grafico(self,nombre_columna, titulo_grafico):
+    def generar_grafico(self,hoja,nombre_columna, titulo_grafico):
         #Generar la gráfica
         x = ["Promedio","Mediana", "Desviación Estándar"]
-        y = [self.promedio(nombre_columna), self.mediana(nombre_columna), self.desviacion_estandar(nombre_columna)]
+        y = [self.promedio(hoja,nombre_columna), self.mediana(hoja,nombre_columna), self.desviacion_estandar(hoja,nombre_columna)]
 
         plt.figure(figsize=(8, 6))
         sns.barplot(x=x, y=y, palette="viridis")

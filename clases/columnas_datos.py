@@ -1,22 +1,16 @@
 from .lector_excel import LectorExcel as Lector
 
 class ColumnasDatos(Lector):
-    def __init__(self, archivo_excel, nombre_hoja):
-        super().__init__(archivo_excel, nombre_hoja)
+    def __init__(self, archivo_excel):
+        super().__init__(archivo_excel)
     
-    @property
-    def datos(self): 
-        df = self.leer_excel()
-        data = []
-        for columna in df:
-            datos_columna = df[columna]
-            lista_columna = [columna] + datos_columna.tolist()
-            # Agregar la lista a la lista de datos
-            data.append(lista_columna)
-        return data
     
-    @property
-    def encabezados(self):
-        df = self.leer_excel()
+    def encabezados(self,hoja):
+        df = self.leer_excel(hoja)
         encabezados = df.columns.tolist()
         return encabezados
+    
+    def numero_columna(self,hoja,nombre):
+        df = self.leer_excel(hoja)
+        numero_columna = df.columns.get_loc(nombre)
+        return numero_columna
